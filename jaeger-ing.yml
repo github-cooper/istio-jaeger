@@ -1,24 +1,24 @@
-#apiVersion: networking.k8s.io/v1
-#kind: Ingress
-#metadata:
-#  name: jaeger-ingress
-#  namespace: istio-system
-#  annotations:
-#    ingress.kubernetes.io/rewrite-target: /
-#spec:
-#  ingressClassName: nginx
-#  rules:
-#  - host: jaeger.kubernetes.docker.internal
-#    http:
-#      paths:
-#      - path: /
-#        pathType: Prefix
-#        backend:
-#          service:
-#            name: tracing 
-#            port:
-#              number: 80
-#  tls:
-#  - hosts:
-#    - jaeger.kubernetes.docker.internal
-#    secretName: your-certificate-name
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jaeger-ingress
+  namespace: istio-system
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: jaeger.aks-uk.uksouth.cloudapp.azure.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: tracing 
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - jaeger.aks-uk.uksouth.cloudapp.azure.com
+    secretName: your-certificate-name
